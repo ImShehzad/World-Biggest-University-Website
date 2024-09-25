@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page with Slider</title>
+    <link rel="stylesheet" href="About.css">
+</head>     
+<body>
+    <div class="about">
+        <h1>Welcome to World's Biggest University</h1>
+        <p>At World Biggest University, we are dedicated to providing an exceptional educational experience that fosters academic excellence, personal growth, and innovative thinking. With a history spanning over [number] years, we have established ourselves as a global leader in higher education, offering a diverse range of programs to students from around the world.</p>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide"><img src="Images/china.jfif" alt="Slide 1"></div>
+                <div class="slide"><img src="Images/dubai2.jpg" alt="Slide 2"></div>
+                <div class="slide"><img src="Images/london2.avif" alt="Slide 3"></div>
+            </div>
+            <div class="controls">
+                <button class="control-button" onclick="prevSlide()">❮</button>
+                <button class="control-button" onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            slides.style.transform = `translateX(${-currentIndex * 100}%)`;
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        // Optional: Auto-slide
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+    </script>
+</body>
+</html>
